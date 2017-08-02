@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MCSConstants.h"
 #import "MCSVisit.h"
+#import "MCSVenueVisitProtocol.h"
 #import <CoreLocation/CLLocationManager.h>
 
 typedef void (^VisitResultBlock)(NSArray<MCSVisit*> * _Nullable objects, NSError * _Nullable error);
@@ -16,6 +17,8 @@ typedef void (^VisitResultBlock)(NSArray<MCSVisit*> * _Nullable objects, NSError
 @interface MCSVenueVisit : NSObject
 
 @property (retain, nonatomic) NSArray* _Nullable visits;
+
+@property (retain, nonatomic) id<MCSVenueVisitProtocol> _Nullable delegate;
 
 - (void)exitVenueVisits;
 - (void)determineVenueState:(CLLocation* _Nullable) location forceEnterVenue:(NSString* _Nullable)venueId;

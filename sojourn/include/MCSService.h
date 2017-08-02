@@ -15,7 +15,7 @@
 #import "MCSTileData.h"
 #import "MCSVenueVisit.h"
 #import "MCSBeaconVisit.h"
-
+#import "MCSVenueVisitProtocol.h"
 
 
 
@@ -61,4 +61,5 @@ typedef void (^QueryResultBlock)(NSArray<PFObject*> * _Nullable objects, NSError
 @property (nonatomic, retain) NSString* _Nullable username;
 @property (nonatomic, readonly) NSString* _Nullable deviceId;
 @property (nonatomic) MCSReachability* _Nullable hostReachability;
+@property (nonatomic, retain) id<MCSVenueVisitProtocol> _Nullable visitDelegate;
 @end
