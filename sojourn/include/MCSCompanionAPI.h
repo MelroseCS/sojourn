@@ -14,10 +14,18 @@
 
 @interface MCSCompanionAPI : NSObject
 
-
-+(MCSOrganisation*) getOrganisation:(NSString*)orgId;
++(BOOL)saveVenue:(MCSVenue*)venue error:(NSError **)error;
++(BOOL)deleteVenue:(MCSVenue*)venue error:(NSError **)error;
 +(NSArray*) getVenuesForOrganisation:(MCSOrganisation*)org offset:(int)offset;
 +(NSInteger) getVenueCount:(MCSOrganisation*)org;
+
++(BOOL) saveOrganisation:(MCSOrganisation*)org error:(NSError **)error;
++(MCSOrganisation*) getOrganisationByName:(NSString*)name error:(NSError **)error;
++(MCSOrganisation*) getOrganisationById:(NSString*)orgId error:(NSError **)error;
++(BOOL) deleteOrganisation:(MCSOrganisation*)org error:(NSError **)error;
+
+
+
 +(void)saveBeacon:(MCSBeacon*)beacon;
 
 @end

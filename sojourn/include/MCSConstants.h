@@ -11,9 +11,9 @@
 
 @import Foundation;
 
-#define UUID                @"uuid"
-#define MAJOR               @"major"
-#define MINOR               @"minor"
+#define BEACON_UUID                @"uuid"
+#define BEACON_MAJOR               @"major"
+#define BEACON_MINOR               @"minor"
 
 
 #define LOCATION_OBJECT     @"DeviceLocation"
@@ -57,7 +57,9 @@
 
 #define ORGANISATION_OBJECT @"Organisation"
 #define ORGANISATION_ID     @"orgId"
+#define ORGANISATION_UUID   @"uuid"
 #define ORGANISATION_POINTER @"organisationId"
+#define ORGANISATION_NAME   @"name"
 
 #define TILE_UPDATED_NOTIFICATION @"SOJOURN_NOTIFICATION_TILE_UPDATED"
 
