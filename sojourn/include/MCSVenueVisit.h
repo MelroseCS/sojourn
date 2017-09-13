@@ -23,5 +23,6 @@ typedef void (^VisitResultBlock)(NSArray<MCSVisit*> * _Nullable objects, NSError
 - (void)exitVenueVisits;
 - (void)determineVenueState:(CLLocation* _Nullable) location forceEnterVenue:(NSString* _Nullable)venueId;
 - (void)flushVenueVisits;
+- (PFObject* _Nullable)checkCurrentlyInVenue:(PFObject* _Nonnull)venue;
 
 @end

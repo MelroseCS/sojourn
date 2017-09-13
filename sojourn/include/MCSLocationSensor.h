@@ -44,6 +44,10 @@ typedef void(^LocationManagerLocationUpdateBlock)(CLLocation * _Nullable locatio
 -(void)requestLocation: (LocationManagerLocationUpdateBlock _Nonnull)handler;
 -(void)requestLocationWithVenue:(NSString* _Nullable)venueId;
 - (void)beaconRequestDidTimeout:(MCSBeaconRequest* _Nullable)beaconRequest;
+
+-(void)cancelLocationUpdates:(NSInteger)request;
+-(NSInteger)subscribeToLocationUpdates: (LocationManagerLocationUpdateBlock _Nonnull)handler;
+
 @end
 
 

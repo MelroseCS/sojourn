@@ -18,12 +18,20 @@
 #import "MCSVenueVisitProtocol.h"
 
 
+typedef CF_ENUM(int, CFSojournErrors) {
+    kCFInvalidParameters = 1,
+    kCFLocationDisabled = 2,
+    kCFLocationServicesDisabled = 3,
+    kCFLocationRequestTimeout = 4
+};
 
+extern NSString* _Nonnull kCFSojournDomain;
 
 
 typedef void (^LocationResultBlock)(CLLocation* _Nullable location, NSError * _Nullable error);
 typedef void (^PushResultBlock)(UIBackgroundFetchResult result);
 typedef void (^QueryResultBlock)(NSArray<PFObject*> * _Nullable objects, NSError * _Nullable error);
+typedef void (^ResultBlock)(BOOL succeeded, NSError * _Nullable error);
 
 
 @interface MCSService : NSObject
@@ -34,7 +42,7 @@ typedef void (^QueryResultBlock)(NSArray<PFObject*> * _Nullable objects, NSError
 + (MCSService* _Nonnull)sharedService;
 -(BOOL) initWithConfiguration:(NSString* _Nonnull)applicationId serverUrl:(NSString* _Nonnull)url;
 -(void)saveLocationOffline:(CLLocation* _Nonnull)location;
-
+-(void) checkinVenue:(PFObject* _Nonnull)venue timeout:(int)timeoutSecs key:(NSString* _Nullable)key object:(NSObject* _Nullable)object handler:(ResultBlock _Nonnull)handler;
 -(void) flush;
 -(void) fetchConfig;
 

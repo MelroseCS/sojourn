@@ -26,5 +26,6 @@ typedef void (^QueryResultBlock)(NSArray<PFObject*> * _Nullable objects, NSError
 - (void)getTileData: (CLLocationCoordinate2D) location distance:(double)distance force:(BOOL)force;
 - (void)getLocalVenues: (CLLocationCoordinate2D) location maxItems:(int)limit handler:(QueryResultBlock _Nonnull)handler;
 - (void)checkTimestamp: (NSDate* _Nullable)timestamp;
+- (void)addVenueToTile:(PFObject* _Nonnull)venue;
 
 @end
