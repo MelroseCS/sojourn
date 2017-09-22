@@ -27,6 +27,9 @@ typedef CF_ENUM(int, CFSojournErrors) {
 
 extern NSString* _Nonnull kCFSojournDomain;
 
+extern NSString* _Nonnull kCFSojournMinAccuracyKey;
+extern NSString* _Nonnull kCFSojournMinDistanceKey;
+
 
 typedef void (^LocationResultBlock)(CLLocation* _Nullable location, NSError * _Nullable error);
 typedef void (^PushResultBlock)(UIBackgroundFetchResult result);
