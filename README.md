@@ -58,6 +58,7 @@ pod 'sojourn'
 `$ cd <path-to-project>/project/`
 
 * Run the pod install command. This will install the SDKs specified in the Podspec, along with any dependencies they may have.
+
 `$ pod install`
 * Open your app's .xcworkspace file to launch Xcode. Use this file for all development on your app.
 
@@ -86,7 +87,8 @@ The SDK needs to be initialised in order to start working.  To do this you will 
 ## Enable Location 
 To enable sojourn to start collecting location data you must explicitly enable it using the following.  This must be called after initialisation.
 
-```[SojournService sharedService].enableLocation = YES;
+```
+[SojournService sharedService].enableLocation = YES;
 ```
 
 ## Inbox
@@ -160,5 +162,6 @@ Informed consent is the most appropriate basis for processing personal location 
 
 To ensure Sojourn complies with GDPRs right to be forgotten we supply an API to allow users to mark their account as deleted.  This will record the users request to be forgotten and trigger an asynchronous process to delete the location data.
 
-```- (void)deleteMe:(DeleteMeBooleanResultBlock _Nonnull)block;
+```
+- (void)deleteMe:(DeleteMeBooleanResultBlock _Nonnull)block;
 ```
