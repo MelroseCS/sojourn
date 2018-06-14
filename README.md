@@ -163,5 +163,7 @@ Informed consent is the most appropriate basis for processing personal location 
 To ensure Sojourn complies with GDPRs right to be forgotten we supply an API to allow users to mark their account as deleted.  This will record the users request to be forgotten and trigger an asynchronous process to delete the location data.
 
 ```
-- (void)deleteMe:(DeleteMeBooleanResultBlock _Nonnull)block;
+- (void)deleteMe:^(BOOL succeeded, NSError * _Nullable error) {
+    NSLog(@"User account data marked for deletion result:%d", succeeded);
+}];
 ```
