@@ -103,14 +103,14 @@ Data types supported: NSString, NSDate, NSNumber.
 ## Push Handling
 Sojourn will require push to be enabled to notify users of new messages when the application is in the background.  There are a number of other system notifications that are silent.  That is no UI is shown in response to these messages.
 
-# Store Push Token
+### Store Push Token
 The push token will need to be persisted in order to enable Sojourn to send pushes to the device.  Call the following API to store the push.  This should be called everytime you receive a push token from the OS.  As it may change.
 
 ```
 - (void)storeRemoteNotificationsWithDeviceToken:(NSData *_Nullable)deviceToken
 ```
 
-# Handle Incoming Push
+### Handle Incoming Push
 Push notification should be passed to Sojourn in order for them to be handled.  It is safe to pass every notification regardless of the intended recipient.
 
 ```
