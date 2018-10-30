@@ -65,6 +65,7 @@ end
 * Run the pod install command. This will install the SDKs specified in the Podspec, along with any dependencies they may have.
 
 `$ pod repo update`
+
 `$ pod install`
 
 * Open your app's .xcworkspace file to launch Xcode. Use this file for all development on your app. Do not open the xcodeproj (project) itself after this. 
