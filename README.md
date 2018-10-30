@@ -62,7 +62,7 @@ end
 
 `$ cd <path-to-project>`
 
-* Run the pod install command. This will install the SDKs specified in the Podspec, along with any dependencies they may have.
+* Run the pod install command. This will install the SDKs specified in the Podspec, along with any dependencies they may have. 'pod repo update' will first ensure you have the required version in your local cache. 
 
 `$ pod repo update`
 
