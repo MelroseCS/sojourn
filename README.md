@@ -65,7 +65,7 @@ end
 * Run the pod install command. This will install the SDKs specified in the Podspec, along with any dependencies they may have.
 
 `$ pod install`
-* Open your app's .xcworkspace file to launch Xcode. Use this file for all development on your app.
+* Open your app's .xcworkspace file to launch Xcode. Use this file for all development on your app. Do not open the xcodeproj (project) itself after this. 
 
 ## Enable Background Location for your Project
 * Make the Project Navigator visible in Xcode (?+1)
@@ -74,7 +74,7 @@ end
 * Select Capabilities in the Standard Editor on the right hand side.
 * Turn the 'Background Modes' option on
 * Select the 'Location Updates' checkbox
-* Add descriptions for keys NSLocationAlwaysAndWhenInUseUsageDescription, NSLocationWhenInUseUsageDescription and/or NSLocationAlwaysUsageDescription to your applications plist file.
+* Add descriptions for keys NSLocationAlwaysAndWhenInUseUsageDescription, NSLocationWhenInUseUsageDescription and/or NSLocationAlwaysUsageDescription to your applications plist file. Do this by adding Custom iOS Target Properties to the Info pane in XCode. 
 
 ## Add SDK initialisation
 The SDK needs to be initialised in order to start working.  To do this you will need to contact support to retrieve your applicationId and the URL of the server.
@@ -84,7 +84,7 @@ The SDK needs to be initialised in order to start working.  To do this you will 
  
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[SojournService sharedService] initWithConfiguration:@"ENTER_YOUR_APPLICATION_ID" serverUrl:@"ENTER_YOUR_SERVER_URL"];
+    [[MCSService sharedService] initWithConfiguration:@"ENTER_YOUR_APPLICATION_ID" serverUrl:@"ENTER_YOUR_SERVER_URL"];
     return YES;
 }
 ```
@@ -93,7 +93,7 @@ The SDK needs to be initialised in order to start working.  To do this you will 
 To enable sojourn to start collecting location data you must explicitly enable it using the following.  This must be called after initialisation.
 
 ```
-[SojournService sharedService].enableLocation = YES;
+[MCSService sharedService].enableLocation = YES;
 ```
 
 ## Custom Attribute
@@ -129,7 +129,7 @@ The inbox contains 0..* messages delivered by the platform.  These may be genera
 Retrieves the messages for the specific device.
 
 ```
-[[SojournService sharedService] getInbox:0 limit:30 block:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+[[MCSService sharedService] getInbox:0 limit:30 block:^(NSArray * _Nullable objects, NSError * _Nullable error) {
     if (!error) {
         //do something with the messages.
     }
@@ -140,7 +140,7 @@ Retrieves the messages for the specific device.
 Gets the total number of messages in the inbox and the total number of unread messages in the inbox.
 
 ```
-[[SojournService sharedService] getInboxCount:^(int total, int unread) {
+[[MCSService sharedService] getInboxCount:^(int total, int unread) {
     NSLog(@"Inbox Total:%d, Unread:%d", total, unread);
 }];
 ```
@@ -151,7 +151,7 @@ If an error occures then a value of -1 is passed to the block handler.
 Marks all messages in the inbox as read.
 
 ```
-[[SojournService sharedService] markInboxAsRead:^(BOOL succeeded, NSError * _Nullable error) {
+[[MCSService sharedService] markInboxAsRead:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Marked all messages as read result:%d", succeeded);
 }];
 ```
@@ -160,7 +160,7 @@ Marks all messages in the inbox as read.
 Marks a specific message identified by it's objectId as read.
 
 ```
-[[SojournService sharedService] markAsRead:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
+[[MCSService sharedService] markAsRead:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Marked message %@ as read result:%d", message.objectId, succeeded);
 }];
 ```
@@ -169,7 +169,7 @@ Marks a specific message identified by it's objectId as read.
 Deletes a specific message identified by it's objectId.
 
 ```
-[[SojournService sharedService] deleteInboxMessage:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
+[[MCSService sharedService] deleteInboxMessage:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Delete message %@ result:%d", message.objectId, succeeded);
 }];
 ```
@@ -178,7 +178,7 @@ Deletes a specific message identified by it's objectId.
 Deletes all messages.
 
 ```
-[[SojournService sharedService] deleteAllInboxMessages:^(BOOL succeeded, NSError * _Nullable error) {
+[[MCSService sharedService] deleteAllInboxMessages:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Deleted all messages result:%d", succeeded);
 }];
 ```
