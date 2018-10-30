@@ -51,7 +51,7 @@ CocoaPods is used to install and manage dependencies in existing Xcode projects.
 platform :ios, '8.0'
 
 target '<xcode-target-name>' do
-   pod 'sojourn'
+   pod 'sojourn', '~> 0.0.49'
 end
 
 
@@ -64,7 +64,9 @@ end
 
 * Run the pod install command. This will install the SDKs specified in the Podspec, along with any dependencies they may have.
 
+`$ pod repo update`
 `$ pod install`
+
 * Open your app's .xcworkspace file to launch Xcode. Use this file for all development on your app. Do not open the xcodeproj (project) itself after this. 
 
 ## Enable Background Location for your Project
