@@ -45,11 +45,16 @@ CocoaPods is used to install and manage dependencies in existing Xcode projects.
 
 * Create an Xcode project, and save it to your local machine.
 * Create a file named Podfile in the root directory of your project. This file defines your project's dependencies, and is commonly referred to as a Podspec.
-* Open Podfile, and add your dependencies. A simple Podspec is shown here:
+* Open Podfile, and add your dependencies. A simple Podspec is shown here. replace <xcode-target-name> as appropriate:
 
 ```source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
-pod 'sojourn'
+
+target '<xcode-target-name>' do
+   pod 'sojourn'
+end
+
+
 ```
 
 * Save the file.
