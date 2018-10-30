@@ -82,11 +82,11 @@ end
 The SDK needs to be initialised in order to start working.  To do this you will need to contact support to retrieve your applicationId and the URL of the server.
 
 * Add to the didFinishLaunchingWithOptions function in your appDelegate the init function.
-```#import <sojourn/MCSService.h>
+```#import <sojourn/Sojourn.h.h>
  
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[MCSService sharedService] initWithConfiguration:@"ENTER_YOUR_APPLICATION_ID" serverUrl:@"ENTER_YOUR_SERVER_URL"];
+    [[Sojourn sharedService] initWithConfiguration:@"ENTER_YOUR_APPLICATION_ID" serverUrl:@"ENTER_YOUR_SERVER_URL"];
     return YES;
 }
 ```
@@ -95,7 +95,7 @@ The SDK needs to be initialised in order to start working.  To do this you will 
 To enable sojourn to start collecting location data you must explicitly enable it using the following.  This must be called after initialisation.
 
 ```
-[MCSService sharedService].enableLocation = YES;
+[Sojourn sharedService].enableLocation = YES;
 ```
 
 ## Custom Attribute
@@ -131,7 +131,7 @@ The inbox contains 0..* messages delivered by the platform.  These may be genera
 Retrieves the messages for the specific device.
 
 ```
-[[MCSService sharedService] getInbox:0 limit:30 block:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+[[Sojourn sharedService] getInbox:0 limit:30 block:^(NSArray * _Nullable objects, NSError * _Nullable error) {
     if (!error) {
         //do something with the messages.
     }
@@ -142,7 +142,7 @@ Retrieves the messages for the specific device.
 Gets the total number of messages in the inbox and the total number of unread messages in the inbox.
 
 ```
-[[MCSService sharedService] getInboxCount:^(int total, int unread) {
+[[Sojourn sharedService] getInboxCount:^(int total, int unread) {
     NSLog(@"Inbox Total:%d, Unread:%d", total, unread);
 }];
 ```
@@ -153,7 +153,7 @@ If an error occures then a value of -1 is passed to the block handler.
 Marks all messages in the inbox as read.
 
 ```
-[[MCSService sharedService] markInboxAsRead:^(BOOL succeeded, NSError * _Nullable error) {
+[[Sojourn sharedService] markInboxAsRead:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Marked all messages as read result:%d", succeeded);
 }];
 ```
@@ -162,7 +162,7 @@ Marks all messages in the inbox as read.
 Marks a specific message identified by it's objectId as read.
 
 ```
-[[MCSService sharedService] markAsRead:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
+[[Sojourn sharedService] markAsRead:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Marked message %@ as read result:%d", message.objectId, succeeded);
 }];
 ```
@@ -171,7 +171,7 @@ Marks a specific message identified by it's objectId as read.
 Deletes a specific message identified by it's objectId.
 
 ```
-[[MCSService sharedService] deleteInboxMessage:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
+[[Sojourn sharedService] deleteInboxMessage:message.objectId block:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Delete message %@ result:%d", message.objectId, succeeded);
 }];
 ```
@@ -180,7 +180,7 @@ Deletes a specific message identified by it's objectId.
 Deletes all messages.
 
 ```
-[[MCSService sharedService] deleteAllInboxMessages:^(BOOL succeeded, NSError * _Nullable error) {
+[[Sojourn sharedService] deleteAllInboxMessages:^(BOOL succeeded, NSError * _Nullable error) {
     NSLog(@"Deleted all messages result:%d", succeeded);
 }];
 ```
