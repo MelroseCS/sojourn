@@ -201,3 +201,14 @@ To ensure Sojourn complies with GDPRs right to be forgotten we supply an API to 
     NSLog(@"User account data marked for deletion result:%d", succeeded);
 }];
 ```
+
+
+### Troubleshooting
+If your xcode project does not compile or link, please check that you opened the xcode workspace and not the xcode project. The workspace, created by the pod steps described earlier, ensures that all dependencies are properly managed. 
+
+
+
+
+
+
+
