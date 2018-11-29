@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIApplication.h>
+#import <CoreLocation/CoreLocation.h>
 #import "SojournListener.h"
 typedef void (^PushResultBlock)(UIBackgroundFetchResult result);
 typedef void (^InboxCountResultBlock)(int total, int unread);
 typedef void (^InboxResultBlock)(NSArray* _Nullable objects, NSError * _Nullable error);
 typedef void (^InboxBooleanResultBlock)(BOOL succeeded, NSError *_Nullable error);
 typedef void (^DeleteMeBooleanResultBlock)(BOOL succeeded, NSError *_Nullable error);
-
+typedef void (^LocationResultBlock)(CLLocation* _Nullable location, NSError * _Nullable error);
 
 
 
@@ -26,12 +27,17 @@ typedef void (^DeleteMeBooleanResultBlock)(BOOL succeeded, NSError *_Nullable er
  */
 @property (nonatomic) BOOL enableLocation;
 /**
- Register a deletegate by setting this property to get
+ Register a delegate by setting this property to get
  notifications of new messages etc..
  */
 @property (nonatomic, strong) id<SojournListener> _Nullable delegate;
 
-
+/**
+ The device Identifier, this will be unique for the device.  Upgrading
+ Applications this will persist.  However it will be regenerated if the user
+ decides to uninstall the app first and then install.
+ */
+@property (nonatomic, readonly) NSString* _Nullable deviceId;
 /**
  Returns the one and only instance of the Sojourn SDK.
  */
@@ -95,4 +101,9 @@ typedef void (^DeleteMeBooleanResultBlock)(BOOL succeeded, NSError *_Nullable er
  not be instant.
  */
 - (void)deleteMe:(DeleteMeBooleanResultBlock _Nonnull)block;
+/**
+ Fires a location shot to get the devices' current location.
+ */
+- (void)getCurrentLocation:(LocationResultBlock _Nonnull)handler;
+
 @end
